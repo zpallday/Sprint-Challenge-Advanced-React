@@ -2,7 +2,8 @@ import React from 'react';
 
 function playerForm(props) {
 
-    return (
+  
+return (
         <>
         {props.data.map(player => (
             <div key={player.id} className='player'>

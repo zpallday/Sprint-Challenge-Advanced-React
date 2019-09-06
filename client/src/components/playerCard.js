@@ -25,6 +25,7 @@ class playerCard extends React.Component {
                   <PlayerForm data={this.state.players} />
                 </div>
             )
-    }
-}
+
+    };
+};
     export default playerCard;
