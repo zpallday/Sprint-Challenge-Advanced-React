@@ -2,30 +2,38 @@ import React from 'react';
 import axios from 'axios';
 import PlayerForm from './playerForm';
 
-class playerCard extends React.Component {
-    constructor() {
-        super();
+ class playerCard extends React.Component {
+    _isMounted = false;
+    constructor(props) {
+        super(props);
         this.state = {
-            players: []
+            players: [],
+            data: []
         }
     }
-    componentDidUnMount(){
+    componentDidMount() {
+        this._isMounted = true;
         axios
         .get(' http://localhost:5000/api/players')
-        .then((res) => {
-        this.setState({players: res.data})
-        }).catch(err => console.log(err))
-    }
+        .then(data => {
+        if (this._isMounted) {
+        this.setState({
+        data: data.data})
+ 
+}
+})
+}
 
+componentWillUnmount() {
+    this._isMounted = false;
+  }
 
-
-        render() {
+         render() {
             return(
                 <div>
-                  <PlayerForm data={this.state.players} />
+                   <PlayerForm data={this.state.data}/>
                 </div>
             )
-
-    };
-};
-    export default playerCard;
+    }
+}
+    export default playerCard; 
