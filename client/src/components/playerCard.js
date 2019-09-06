@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { render } from '@testing-library/react';
+import PlayerForm from './playerForm';
 
 class playerCard extends React.Component {
     constructor() {
@@ -13,7 +13,7 @@ class playerCard extends React.Component {
         axios
         .get(' http://localhost:5000/api/players')
         .then((res) => {
-
+        this.setState({players: res.data})
         }).catch(err => console.log(err))
     }
 
@@ -22,7 +22,7 @@ class playerCard extends React.Component {
         render() {
             return(
                 <div>
-                   players
+                  <PlayerForm data={this.state.players} />
                 </div>
             )
     }
