@@ -9,7 +9,7 @@ class playerCard extends React.Component {
             players: []
         }
     }
-    componentDidMount(){
+    componentDidUnMount(){
         axios
         .get(' http://localhost:5000/api/players')
         .then((res) => {
